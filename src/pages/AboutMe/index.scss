@@ -1,0 +1,240 @@
+.aboutme{
+    .topInfo{
+        display: flex;
+        .user{
+            margin-bottom: 20px;
+            margin-right: 80px;
+            .ant-card{
+                .ant-card-cover{
+                    
+                    img{
+                        margin-left: 50px;
+                        height: 200px;
+                        border-radius: 60%;
+                        width: 200px;
+                    }
+                }
+                .ant-card-body{
+                    padding: 20px;
+                }
+            }
+        }
+        .dataNum{
+            a{
+                color: #ffffff!important;
+            }
+            .right:hover{
+                color: #8579e1!important;
+            }
+            .top{
+                display: flex;
+                justify-content: space-around;
+            }
+            .bottom{
+                display: flex;
+                justify-content: space-around;
+            }
+            .ant-col{
+                padding-bottom: 20px;
+            }
+            .one{
+                margin-bottom: 20px;
+                margin-right: 40px;
+                
+                background: rgb(15, 189, 15);
+               
+                .ant-card-body{
+                    padding: 10px;
+                }
+                .left{
+                    float: left;
+                        font-size: 90px;
+                }
+                .right{
+                    height: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    float: left;
+                    p{
+                        font-size: 25px;
+                    }
+                    span{
+                        font-size: 30px;
+                    }
+                }
+            }
+            .two{
+                margin-bottom: 20px;
+                margin-right: 40px;
+                color: #ffffff;
+                background: rgb(242, 155, 4);
+                .ant-card-body{
+                    padding: 10px;
+                }
+                .left{
+                    float: left;
+                        font-size: 90px;
+                }
+                .right{
+                    height: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    float: left;
+                    p{
+                        font-size: 25px;
+                    }
+                    span{
+                        font-size: 30px;
+                    }
+                }
+            }
+            .three{
+                margin-bottom: 20px;
+                margin-right: 40px;
+                color: #ffffff;
+                background: rgb(255, 0, 0);
+                .ant-card-body{
+                    padding: 10px;
+                }
+                .left{
+                    float: left;
+                        font-size: 90px;
+                }
+                .right{
+                    height: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    float: left;
+                    p{
+                        font-size: 25px;
+                    }
+                    span{
+                        font-size: 30px;
+                    }
+                }
+            }
+            .four{
+                color: #ffffff;
+                margin-right: 40px;
+                background: rgb(0, 38, 252);
+                .ant-card-body{
+                    padding: 10px;
+                }
+                .left{
+                    float: left;
+                        font-size: 90px;
+                }
+                .right{
+                    height: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    float: left;
+                    p{
+                        font-size: 25px;
+                    }
+                    span{
+                        font-size: 30px;
+                    }
+                }
+            }
+            .five{
+                color: #ffffff;
+                margin-right: 40px;
+                background: rgb(234, 4, 255);
+                .ant-card-body{
+                    padding: 10px;
+                }
+                .left{
+                    float: left;
+                        font-size: 90px;
+                }
+                .right{
+                    height: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    float: left;
+                    p{
+                        font-size: 25px;
+                    }
+                    span{
+                        font-size: 30px;
+                    }
+                }
+            }
+            .six{
+                color: #ffffff;
+                margin-right: 40px;
+                background: rgb(251, 255, 0);
+                .ant-card-body{
+                    padding: 10px;
+                }
+                .left{
+                    float: left;
+                        font-size: 90px;
+                }
+                .right{
+                    height: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    float: left;
+                    p{
+                        font-size: 25px;
+                    }
+                    span{
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+    .middleInfo{
+        display: flex;
+        .sortData{
+            margin-right: 50px;
+        }
+        .newestData{
+            width: 50%;
+            .ant-card-body{
+                padding: 0!important;
+                
+            }
+            .ant-comment{
+                margin-left: 25px;
+                padding-top: 10px;
+            }
+            .ant-comment-inner{
+                padding: 0!important;
+            }
+            .ant-card-head-title{
+                font-weight: 700;
+            }
+            .messageNew{
+                height: 165px;
+                overflow: hidden;
+            }
+            .bulletNew{
+                height: 165px;
+                overflow: hidden;
+            }
+            .commentNew{
+                height: 165px;
+                overflow: hidden;
+            }
+        }
+    }
+}
+.comment-action {
+    padding-left: 8px;
+    cursor: 'auto';
+  }
+  
+  [class*='-col-rtl'] .comment-action {
+    padding-right: 8px;
+    padding-left: 0;
+  }

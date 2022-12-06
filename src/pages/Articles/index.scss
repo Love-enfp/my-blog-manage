@@ -1,0 +1,39 @@
+.articleHightOver{
+    // overflow: scroll;
+   
+    height: 100%;
+    .article{
+        .ant-table-thead{
+        
+            .ant-table-cell{
+                font-size: 18px;
+                font-weight: 700;
+                text-align: center!important;
+            }
+            .anticon-search{
+                font-size: 25px;
+            }
+            
+        }
+        .ant-table-tbody{
+            
+                text-align: center!important;
+                .ant-tag{
+                    font-weight: 700;
+                    height: 30px;
+                    // width: 60px;
+                    text-align: center;
+                    line-height: 30px;
+                    font-size: 13px;
+                    color: rgb(90, 146, 6);
+                }
+                .ant-tag-orange{
+                    color: orange!important;
+                }
+            
+        }
+        
+    }
+    
+}
+

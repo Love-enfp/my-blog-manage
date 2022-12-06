@@ -1,0 +1,103 @@
+.home{
+    height: 100%;
+    .ant-layout{
+         height: 800px;
+        .ant-layout-header{
+            background: rgb(0, 0, 0);
+            display: flex;
+            justify-content:space-between;
+            .userImage{
+                height: 100%;
+               img{
+                //   width: 80px;
+                height: 105%;
+                width: 400px;
+                //   border-radius: 30%;
+               }
+            }
+            .welcome{
+                font-weight: 700;
+                color: white;
+                font-size: 28px;
+                span{
+                    padding-left: 5px;
+                }
+            }
+            .outLogin{
+                span{
+                    font-size: 28px;
+                    color: white;
+                }
+            }
+        }
+        .ant-layout-sider{
+            background: 0;
+            // border: 1px solid red;
+            .slider{
+                height: 100%;
+                .theme{
+                    height: 5%;
+                    background-color: #ffffff;
+                }
+                .ant-menu{
+                    height: 95%;
+                }
+                
+            }
+        }
+        .ant-layout-content{
+            // height: 100%;
+            // height: 1000px;
+            background: rgb(220, 239, 240);
+            padding: 15px;
+            .content{
+                height: 100%;
+            }
+            
+            /*  内部滚动条样式 ----- begin*/
+            .content::-webkit-scrollbar {
+                /*滚动条整体样式*/
+                width : 6px;  /*高宽分别对应横竖滚动条的尺寸*/
+                height: 1px;
+            }
+            /*滚动条里面小方块*/
+            .content::-webkit-scrollbar-thumb {
+                /*滚动条里面小方块*/
+                border-radius   : 5px;
+                background-color: #a8a6c5;
+                background-image: -webkit-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.3) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0.3) 75%,
+                transparent 75%,
+                transparent
+                );
+            }
+            /*滚动条里面小方块*/
+            /*.acrossTimeLine-body-box ::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+                box-shadow   : inset 0 0 4px rgba(100, 169, 169, 0.48);
+                background   : #AAE9E5;
+            }*/
+            /*滚动条里面轨道*/
+            .content::-webkit-scrollbar-track {
+                border-radius: 6px;
+                background   :#04bac0;
+            }
+            /*  内部滚动条样式 ----- end*/
+        }
+        .ant-layout-footer{
+            background: rgb(133, 127, 116);
+        }
+    }
+    // 当是游客访问时候，所有a禁用
+    a.disabled {
+        pointer-events: none;
+            filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+            -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+        opacity: 0.5; /*其他，透明度50%*/
+    }
+}

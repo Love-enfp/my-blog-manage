@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react'
+// 引入路由表
+import routes from './routes';
+// 导入useRoutes
+import { useRoutes } from "react-router-dom";
 function App() {
+  // 根据路由表生成对应的路由规则
+  const element=useRoutes(routes)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {/* 注册路由部分   */}
+    {element}
     </div>
   );
 }

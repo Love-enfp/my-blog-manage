@@ -1,0 +1,43 @@
+.labelOverHigh{
+    // height: 100%;
+    overflow:scroll;
+}
+.labels{
+    .ant-card-head{
+        font-size: 25px;
+        text-align: center;
+        font-weight: 700;
+    }
+    
+    .ant-card-body{
+        .ant-btn{
+            margin-bottom: 15px;
+            margin-top: -5px;
+        }
+        .title{
+            display: block;
+            // margin-bottom: 5px;
+            font-size: 18px;
+            color: rgb(181, 167, 161);
+            
+        }
+    }
+    .detail{
+        h3{
+            color: red;
+            font-weight: 700;
+        }
+    }
+}
+.ant-modal-mask{
+    background-color:0!important
+}
+
+.menu{
+    display: flex;
+    justify-content:space-around;
+    
+    .top{
+        padding-bottom: 5px;
+    }
+}

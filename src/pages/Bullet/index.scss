@@ -1,0 +1,22 @@
+.bulletPage{
+    .top{
+        button{
+            margin-bottom: 10px;
+        }
+    }
+    .ant-table-wrapper{
+        .ant-table-thead{
+            .ant-table-cell{
+                font-weight: 700;
+                text-align: center;
+                font-size: 17px;
+            }
+        }
+        .ant-table-tbody{
+            .ant-table-cell{
+                text-align: center;
+            }
+        }
+        
+    }
+}

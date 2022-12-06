@@ -1,0 +1,203 @@
+.publish{
+   
+    height: 100%;
+    .basicInfo{
+        .ant-form{
+            .labels{
+                .ant-form-item{
+                    // margin-left: 100px!important;
+                    .ant-form-item-label{
+                        text-align: left;
+                        width: 50px!important;
+                    }
+                    .ant-form-item-control{
+                        margin-left: -138px;
+                    }
+                }
+                
+                .addLabel{
+                    margin-left: 50px!important;
+                }
+                
+                
+            }
+            .ant-col-sm-offset-4{
+                margin-left: 20px!important;
+                
+            }
+        }
+    }
+    .mainContent{
+        // position: relative;
+       
+        margin-top: 20px;
+        // background: white;s
+        background-image: url('../../assets/images/publishbgc5.jpg');
+        opacity: 90%;    
+        // z-index: ;
+        background-size: contain;
+        z-index: 200;
+    }
+    .titleMarkd{
+       
+        display: flex;
+        justify-content:space-around;
+        font-style: italic;
+        font-size: 22px;
+        h1{
+            color: #ff9900;
+        }
+    }
+    .marked{
+       
+        color: #eeeeee;
+        height: 500px;
+        display: flex;
+        justify-content:space-around;
+        
+        .input-region{
+            border-radius: 2%;
+            overflow: scroll;
+            width: 45%;
+            // font-size: 16.38px;
+            // height: 500px;
+            border: 1px solid rgb(153, 145, 145);
+            padding: 10px;
+        }
+        .show-region{
+            border-radius: 2%;
+            
+            overflow: scroll;
+            width: 45%;
+            border: 1px solid rgb(255, 255, 255);
+            padding: 10px;
+            // padding-bottom: -10px;
+            // height: 500px;
+            h1,h2,h3,h4,h5{
+                color: #eeeeee!important;
+            }
+        }
+
+    }
+    
+}
+/* 表格 */
+.markdownStyle table {
+    margin: 20px auto;
+    border: 1px solid #000;
+    border-spacing: 0; /*去掉单元格间隙*/
+    text-align: center;
+}
+.markdownStyle table th,
+.markdownStyle table td {
+    padding: 6px 14px;
+    border: 1px solid #000;
+}
+/* h1 h2 h3 h4 h5 h6 p */
+/* .markdownStyle h1,
+.markdownStyle h2,
+.markdownStyle h3,
+.markdownStyle h4,
+.markdownStyle h5,
+.markdownStyle h6,
+.markdownStyle p {
+    margin: 0.3em;
+} */
+/* 行内代码 */
+.markdownStyle code {
+    color: red;
+    background-color: #eeeeee;
+    padding: 0 4px;
+}
+
+/* 图片 */
+.markdownStyle p img {
+    display: block;
+    max-width: 100%;
+    margin: 14px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.markdownStyle blockquote {
+    background-color: #dfdfdf;
+    padding: 14px 40px;
+    font-size: 18px;
+    border-radius: 20px;
+    border: 2px rgb(105, 105, 105) dashed;
+}
+.markdownStyle strong {
+    text-decoration: underline;
+}
+
+.markdownStyle blockquote p {
+    margin: 0;
+}
+
+  /*  内部滚动条样式 ----- begin*/
+  .input-region::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width : 6px;  /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+  }
+  /*滚动条里面小方块*/
+  .input-region::-webkit-scrollbar-track-piece {
+    /*滚动条里面小方块*/
+    border-radius   : 5px;
+    background-color: #ff5900;
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.3) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.3) 75%,
+      transparent 75%,
+      transparent
+    );
+    }
+    /*滚动条里面小方块*/
+    /*.acrossTimeLine-body-box ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        box-shadow   : inset 0 0 4px rgba(100, 169, 169, 0.48);
+        background   : #AAE9E5;
+    }*/
+    /*滚动条里面轨道*/
+    .input-region::-webkit-scrollbar-track {
+        border-radius: 6px;
+        background   :#F6FEFE;
+    }
+
+    /*  内部滚动条样式 ----- begin*/
+  .show-region::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width : 6px;  /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+  }
+  /*滚动条里面小方块*/
+  .show-region::-webkit-scrollbar-track-piece {
+    /*滚动条里面小方块*/
+    border-radius   : 5px;
+    background-color: #ff5900;
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.3) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.3) 75%,
+      transparent 75%,
+      transparent
+    );
+    }
+    /*滚动条里面小方块*/
+    /*.acrossTimeLine-body-box ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        box-shadow   : inset 0 0 4px rgba(100, 169, 169, 0.48);
+        background   : #AAE9E5;
+    }*/
+    /*滚动条里面轨道*/
+    .show-region::-webkit-scrollbar-track {
+        border-radius: 6px;
+        background   :#F6FEFE;
+    }
