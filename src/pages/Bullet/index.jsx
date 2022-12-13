@@ -9,6 +9,7 @@ import { initBullet } from '../../redux/actions/bullet';
 import './index.scss'
 export default function Bullet() {
 
+  const [refresh,setRefresh]=useState(false)
   const dispatch=useDispatch()
 
   const [bullets,setBullets]=useState([])
@@ -40,9 +41,8 @@ export default function Bullet() {
       console.log(res.data);
     })
     message.success('删除成功')
-       setTimeout(() => {
-      window.location.reload() // 强制页面刷新
-    }, 1000);
+    setRefresh(!refresh)
+
   }
 
   const columns = [
@@ -69,6 +69,8 @@ export default function Bullet() {
       key:'handle',
       render: (rowData) => (
         <Space size="middle" key={rowData.id}>
+          <a href={`http://1.117.109.184/aboutme`} className="detail">详情</a>
+
 
           <a  className={localStorage.getItem('visitor-token')?"disabled":''} onClick={()=>updateBullet(rowData)}>编辑</a>
 
@@ -99,7 +101,7 @@ export default function Bullet() {
       setBullets(result)
       dispatch(initBullet(result))
     })
-  },[])
+  },[refresh])
 
 
   return (

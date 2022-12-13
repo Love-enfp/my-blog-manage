@@ -100,11 +100,11 @@ export default function Home() {
             <Layout>
               <Sider width={220}>
                 <div className='slider'>
-                  <div className="theme">
-                    <Divider type="vertical" />
-                    <Switch onChange={changeTheme} /> 改变主题  
-                    <br />
-                  </div>
+                  {/* <div className="theme"> */}
+                    {/* <Divider type="vertical" /> */}
+                    {/* <Switch onChange={changeTheme} /> 改变主题   */}
+                    {/* <br /> */}
+                  {/* </div> */}
                   <Menu
                     defaultSelectedKeys={[pathname]}
                     defaultOpenKeys={['/aboutme']}
@@ -126,7 +126,7 @@ export default function Home() {
                 </div>
               </Content>
             </Layout>
-            <Footer>Footer</Footer>
+            <Footer></Footer>
           </Layout>
     </div>
     

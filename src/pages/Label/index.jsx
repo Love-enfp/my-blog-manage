@@ -13,6 +13,7 @@ export default function Sort() {
   const dispatch=useDispatch()
   // 存储所有标签的状态
   const [dataList,setDataList]=useState([])
+  const [refresh,setRefresh]=useState(false)
 
   // 从reudx中获得数据
   const labels=useSelector(state=>state.labels)
@@ -43,7 +44,7 @@ export default function Sort() {
     })
     
     // api.addSort()
-  },[])
+  },[refresh])
 
   // 删除标签功能-----------------------------------------------------------------------
   function onFinishDelete(value){
@@ -52,6 +53,7 @@ export default function Sort() {
     })
     message.success('删除成功')
     setIsDeleteModalOpen(false);
+    // setRefresh(!refresh)
     setTimeout(() => {
       window.location.reload() // 强制页面刷新
     }, 500);
@@ -80,6 +82,7 @@ export default function Sort() {
     })
     message.success('提交成功')
     setIsModalOpen(false);
+    // setRefresh(!refresh)
 
     setTimeout(() => {
       window.location.reload() // 强制页面刷新
@@ -101,9 +104,13 @@ export default function Sort() {
     const params={oldname,newname}
     api.updateLabel(params).then(res=>{
       console.log(res.data);
+   
     })
     message.success('修改成功')
+    // setRefresh(!refresh)
     setIsModalOpen(false);
+    
+
     setTimeout(() => {
       window.location.reload() // 强制页面刷新
     }, 500);
@@ -249,7 +256,9 @@ export default function Sort() {
                                   <span>id：</span><Tag color="#f50">{i.id}</Tag>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <span>文章id：</span>
-                                    <Tag color="#2db7f5">{i.blog_id}</Tag>
+                                    <a href={`http://1.117.109.184/article/${i.blog_id}`} className="detail">
+                                        <Tag color="#2db7f5">{i.blog_id}</Tag>
+                                    </a>
                                 </div>
                               )
                             }

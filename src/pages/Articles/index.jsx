@@ -267,6 +267,9 @@ const Articles = () => {
       render: (rowData) => (
         <Space size="middle" key={rowData.id}>
 
+          {/* <NavLink   to={`http://1.117.109.184/article/${rowData.id}`} >查看详情</NavLink> */}
+          <a href={`http://1.117.109.184/article/${rowData.id}`} className="detail">详情</a>
+
           <NavLink  className={localStorage.getItem('visitor-token')?"disabled":''}      to="/publish" state={{currentArticle:rowData,currentLabels:labels,flag:true}}>编辑</NavLink>
 
           <Popconfirm
@@ -278,6 +281,7 @@ const Articles = () => {
           >
             <a className={localStorage.getItem('visitor-token')?"disabled":''} >删除</a>
           </Popconfirm>
+
 
         </Space>
       ),

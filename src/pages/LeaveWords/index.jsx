@@ -211,6 +211,8 @@ export default function LeaveWords() {
       key:'handle',
       render: (rowData) => (
         <Space size="middle" key={rowData.id}>
+          <a href={`http://1.117.109.184/leavewords`} className="detail">详情</a>
+
           <Popconfirm
           title="你确定要删除吗"
           onConfirm={()=>deletemessages(rowData)}

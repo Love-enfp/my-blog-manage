@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import api from '../../api';
 
 export default function EditAdd(props) {
+  const [refresh,setRefresh]=useState(false)
   const form=useRef()
   let len=props.n
   // 存储对话框显示的标志

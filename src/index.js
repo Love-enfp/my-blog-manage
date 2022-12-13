@@ -4,6 +4,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 // 引入antd样式文件,注意必须是min文件，不然会报错
 import 'antd/dist/antd.min.css'
+// import 'lib-flexible'
 import './index.scss'
 // 关联redux数据
 import { Provider } from 'react-redux';

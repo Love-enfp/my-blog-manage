@@ -1,7 +1,7 @@
-import { Button, Card, List ,Tag,Form, Input,Modal, message} from 'antd';
+import { Button, Card, List ,Tag,Form, Input,Modal, message,Tooltip} from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {ArrowDownOutlined} from '@ant-design/icons';
+import {ArrowDownOutlined,CheckCircleOutlined,} from '@ant-design/icons';
 import { initSort } from '../../redux/actions/sort';
 import { handleSort } from '../../utils/sort';
 import './index.scss'
@@ -12,6 +12,7 @@ export default function Sort() {
   const dispatch=useDispatch()
   // 存储所有分类的状态
   const [dataList,setDataList]=useState([])
+  const [refresh,setRefresh]=useState(false)
 
   // 从reudx中获得数据
   const sorts=useSelector(state=>state.sorts)
@@ -36,13 +37,14 @@ export default function Sort() {
           innerList
         }
       })
+      console.log(res1);
       // 对数组进行排序
       res1= handleSort(res1)
       setDataList(res1)
     })
    
     // api.addSort()
-  },[])
+  },[refresh])
 
   // 删除分类功能-----------------------------------------------------------------------
   function onFinishDelete(value){
@@ -51,9 +53,10 @@ export default function Sort() {
     })
     message.success('删除成功')
     setIsDeleteModalOpen(false);
-    setTimeout(() => {
-      window.location.reload() // 强制页面刷新
-    }, 500);
+    setRefresh(!refresh)
+    // setTimeout(() => {
+    //   window.location.reload() // 强制页面刷新
+    // }, 500);
   }
   // 删除分类对话框
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -78,9 +81,11 @@ export default function Sort() {
     })
     message.success('提交成功')
     setIsModalOpen(false);
-    setTimeout(() => {
-      window.location.reload() // 强制页面刷新
-    }, 1000);
+    setRefresh(!refresh)
+
+    // setTimeout(() => {
+    //   window.location.reload() // 强制页面刷新
+    // }, 1000);
 
   }
   // 新增分类对话框
@@ -96,11 +101,14 @@ export default function Sort() {
   function onFinishUpdate(value){
     const {oldname,newname}=value
     const params={oldname,newname}
+    console.log(params);
     api.updateSort(params).then(res=>{
       console.log(res.data);
     })
     message.success('修改成功')
     setIsModalOpen(false);
+    // setRefresh(!refresh)
+
     setTimeout(() => {
       window.location.reload() // 强制页面刷新
     }, 500);
@@ -116,13 +124,25 @@ export default function Sort() {
     setIsUpdateModalOpen(false);
   };
 
-  
+  // 当新增一个分类，切有一篇文章选他时候，不显示当前文章五分类这个字样！
+  function judge(name){
+    let res=dataList.filter(i=>{
+      return i.item===name
+    })
+    console.log(res[0].innerList);
+    if(res[0].innerList.length>1)
+    return false
+    return true
+  }
   return (
     <div className='sorts'>
       
 
       <div className="menu">
           <div className="top">
+          {/* <Tag icon={<CheckCircleOutlined />} color="success">
+        点击文章id可查看对应文章
+      </Tag> */}
             <Button type='primary' disabled={localStorage.getItem('blog-token')? false:true} onClick={showModal}>新增分类</Button>
 
             <Modal title="新增分类" open={isModalOpen}  onCancel={handleCancel} footer={[]}>
@@ -239,13 +259,25 @@ export default function Sort() {
                 return (
                   <div className="detail" key={i.id}>
                     {
-                      i.blog_id==0?<h3 color='red'>当前分类无文章！</h3>
+                      i.blog_id==0&&judge(i.name)?
+                      <h3 color='red'>当前分类无文章！</h3>
                       :(
                         <div>
-                           <span>id：</span><Tag color="#f50">{i.id}</Tag>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>文章id：</span>
-                            <Tag color="#2db7f5">{i.blog_id}</Tag>
+                          { 
+                            // 不显示创建的分类数据，因为创建时候，blog_id初始化均为0
+                            i.blog_id!=0?
+                            <div>
+                              <span>id：</span><Tag color="#f50">{i.id}</Tag>
+                              &nbsp;&nbsp;&nbsp;&nbsp;
+                              <span>文章id：</span>
+                              <a href={`http://1.117.109.184/article/${i.blog_id}`} className="detail">
+                                  <Tag color="#2db7f5">{i.blog_id}</Tag>
+                              </a>
+                            </div>
+                            :''
+                          }
+                           
+
                         </div>
                       )
                     }
