@@ -5,6 +5,7 @@ import axios from '../utils/request'
 */
 const base={
     baseUrl:"http://1.117.109.184:3008",
+    // baseUrl:"http://localhost:3008",
     
     upload:'/upload',
 

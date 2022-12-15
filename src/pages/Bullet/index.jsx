@@ -56,7 +56,7 @@ export default function Bullet() {
       title: '内容',
       key:'content',
       dataIndex: 'content',
-      width:400
+      width:400,
     },
     {
       title: '发送时间',

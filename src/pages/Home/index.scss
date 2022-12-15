@@ -31,6 +31,7 @@
             }
         }
         .ant-layout-sider{
+            min-width: 118px!important;
             background: 0;
             // border: 1px solid red;
             .slider{
@@ -38,12 +39,28 @@
                 .theme{
                     height: 5%;
                     background-color: #ffffff;
+                    .ant-btn-primary{
+                        font-size: 14px;
+                        border-radius: 20%;
+                        height: 28px;
+                        line-height: 22px;
+                        margin-bottom: 0!important;
+                        // background: #000;
+                        
+                    }
+                    .ant-switch{
+                        margin-top: -7px;
+                        margin-left: 5px;
+                        height: 28px;
+                    }
                 }
                 .ant-menu{
                     height: 95%;
                 }
+               
                 
             }
+          
             .ant-menu-vertical{
                 background: #ffffff;
             }

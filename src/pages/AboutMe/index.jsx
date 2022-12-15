@@ -7,7 +7,7 @@ import {Link} from "react-router-dom"
 import './index.scss'
 import {dateFormatter} from '../../utils/dateFormat'
 import User from '../../assets/images/user.png'
-import {ReadOutlined,AppstoreOutlined,EditOutlined,TagsOutlined,FireOutlined,HighlightOutlined,CommentOutlined} from '@ant-design/icons';
+import {ReadOutlined,AppstoreOutlined,EditOutlined,PushpinOutlined,TagsOutlined,FireOutlined,HighlightOutlined,CommentOutlined} from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { initMessage } from '../../redux/actions/message';
 import { initLabel} from '../../redux/actions/label';
@@ -279,8 +279,11 @@ export default function AboutMe() {
                 message.map((item,index)=>{
                   return (
                     <div key={index}>
-                       <Comment
-                        author={<a>{item.nick}</a>}
+                       {
+                        index<2?
+                        (
+                        <Comment
+                        author={<a>{item.nick=='钟爱enfp女孩'?<span><PushpinOutlined className='author'></PushpinOutlined>{item.nick}</span>:item.nick}</a>}
                         avatar={<Avatar src={item.avatar} alt="Han Solo" />}
                         content={
                           <p>
@@ -293,7 +296,10 @@ export default function AboutMe() {
                             <span>{item.create_time}</span>
                           </Tooltip>
                         }
-                      />
+                        />)
+                        :''
+                       }
+                       
                     </div>
                   )
                 }):
@@ -313,21 +319,27 @@ export default function AboutMe() {
                 comment?
                 comment.map((item,index)=>{
                   return (
-                     <Comment
-                      key={index}
-                      author={<a>{item.nick}</a>}
-                      avatar={<Avatar src={item.avatar} alt="Han Solo" />}
-                      content={
-                        <p>
-                          {item.content}
-                        </p>
+                    <div  key={index}>
+                      {
+                        index<2?
+                        <Comment
+                        author={<a>{item.nick=='钟爱enfp女孩'?<span><PushpinOutlined className='author'></PushpinOutlined>{item.nick}</span>:item.nick}</a>}
+                          avatar={<Avatar src={item.avatar} alt="Han Solo" />}
+                          content={
+                            <p>
+                              {item.content}
+                            </p>
+                          }
+                          datetime={
+                            <Tooltip title={item.create_time}>
+                              <span>{item.create_time}</span>
+                            </Tooltip>
+                          }
+                        />:''
                       }
-                      datetime={
-                        <Tooltip title={item.create_time}>
-                          <span>{item.create_time}</span>
-                        </Tooltip>
-                      }
-                    />
+                      
+                    </div>
+                     
                   )
                 }):
                 ''
@@ -346,19 +358,25 @@ export default function AboutMe() {
                 bullet?
                 bullet.map((item,index)=>{
                   return (
-                     <Comment
-                      key={index}
-                      content={
-                        <p>
-                          {item.content}
-                        </p>
+                    <div key={index}>
+                      {
+                        index<2?
+                        <Comment
+                      
+                          content={
+                            <p>
+                              {item.content}
+                            </p>
+                          }
+                          datetime={
+                            <Tooltip title={item.create_date}>
+                              <span>{item.create_date}</span>
+                            </Tooltip>
+                          }
+                        />:""
                       }
-                      datetime={
-                        <Tooltip title={item.create_date}>
-                          <span>{item.create_date}</span>
-                        </Tooltip>
-                      }
-                    />
+                    </div>
+                     
                   )
                 }):
                 ''

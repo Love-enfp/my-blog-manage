@@ -4,8 +4,11 @@ import {
   MailOutlined,
   SettingOutlined,
   PoweroffOutlined,
-  UserOutlined
+  UserOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined
 } from '@ant-design/icons';
+import {Button} from 'antd';
 import Title from '../../assets/images/title.png'
 import moduleName from './index.scss'
 import { Divider, Menu, Switch ,Layout,Popconfirm } from 'antd';
@@ -35,11 +38,21 @@ const items = [
 
 ];
 export default function Home() {
+  // 菜单伸缩效果
+  const [collapsed, setCollapsed] = useState(false);
+  function toggleCollapsed (){
+    setCollapsed(!collapsed);
+  };
   const dispatch=useDispatch()
   // 改变主题样式
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
+  const [current, setCurrent] = useState('1');
   const changeTheme = (value) => {
     setTheme(value ? 'dark' : 'light');
+  };
+  const onClick = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
   };
   // useLocation包含有关当前 URL 的信息。pathname为URL 的路径部分。
   const {pathname}=useLocation()
@@ -98,18 +111,34 @@ export default function Home() {
               </div>
             </Header>
             <Layout>
-              <Sider width={220}>
-                <div className='slider'>
-                  {/* <div className="theme"> */}
-                    {/* <Divider type="vertical" /> */}
-                    {/* <Switch onChange={changeTheme} /> 改变主题   */}
-                    {/* <br /> */}
-                  {/* </div> */}
+              <Sider width={220} collapsed={collapsed}>
+                <div className='slider' >
+                  <div className="theme">
+                 
+                  <Button
+                    type="primary"
+                    onClick={toggleCollapsed}
+                    style={{
+                      marginBottom: 16,
+                    }}
+                  >
+                    {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                  </Button>
+                  <Switch
+                    checked={theme === 'dark'}
+                    onChange={changeTheme}
+                    checkedChildren="Dark"
+                    unCheckedChildren="Light"
+                  />
+                  </div>
+                  
                   <Menu
                     defaultSelectedKeys={[pathname]}
                     defaultOpenKeys={['/aboutme']}
                     theme={theme}
                     items={items}
+                    mode="inline"
+                    
                     onClick={changeMenu}
                     // 除了直接点击切换，也可以根据url地址栏切换
                     selectedKeys={pathname}

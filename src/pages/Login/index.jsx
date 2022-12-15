@@ -6,8 +6,10 @@ import './index.scss'
 import { useDispatch } from 'react-redux';
 import { initLogin } from '../../redux/actions/login';
 import Password from 'antd/lib/input/Password';
+import { useRef } from 'react';
 // import {useStore} from '../../store/index'
 export default function Login() {
+    const form=useRef()
     const dispatch=useDispatch()
 //   const {loginStore}=useStore()
   const navigate=useNavigate()
@@ -26,7 +28,12 @@ export default function Login() {
             navigate('/')
         }
         else{
-            console.log("登录失败");
+            message.error("用户名或密码错误，请重试")
+            form.current.setFieldsValue({
+                username:'',
+                password:''
+            })
+
         }
         
     })
@@ -49,6 +56,7 @@ export default function Login() {
         style={{width:400,height:300}}
         >
              <Form
+                ref={form}
                 name="basic"
                 labelCol={{
                     span: 8,

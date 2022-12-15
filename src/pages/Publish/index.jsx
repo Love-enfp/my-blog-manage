@@ -2,7 +2,7 @@ import React from 'react'
 import './index.scss'
 // import moment from 'moment'
 import {  Form, Input ,Select,Button,Upload ,Switch, message,Card, Divider,Tag,
-  Table, Modal, InputNumber,  Popconfirm} from 'antd';
+  Table, Modal, InputNumber,  Popconfirm, List, Typography} from 'antd';
 import { useState ,useEffect} from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { useRef } from 'react';
@@ -242,9 +242,9 @@ export default function Publish() {
       })
       message.success('恭喜您，文章发布成功')
 
-      setTimeout(() => {
-        window.location.reload() // 强制页面刷新
-      }, 1000);
+      // setTimeout(() => {
+      //   window.location.reload() // 强制页面刷新
+      // }, 1000);
 
    }
 
@@ -342,7 +342,61 @@ function onChange({fileList: newFileList}){
   setFileList(newFileList)
     console.log(newFileList)
 }
-
+// 加粗工具
+// const addBlod = () => {
+//   // 获取编辑区光标的位置。未选中文字时：selectionStart === selectionEnd ；选中文字时：selectionStart < selectionEnd
+//   let { selectionStart, selectionEnd } = edit.current
+//   let newValue = selectionStart === selectionEnd
+//                   ? content.slice(0, selectionStart) + '**加粗文字**' + content.slice(selectionEnd)
+//                   : content.slice(0, selectionStart) + '**' + content.slice(selectionStart, selectionEnd) + '**' + content.slice(selectionEnd)
+//   let start = selectionStart + 2
+//   let end = selectionStart === selectionEnd ? selectionEnd + 2 + 4 : selectionEnd + 2
+//   setSelectionRange(edit.current, start, end)  // 选中加粗的文本
+//   setContent(newValue)
+// }
+// function setSelectionRange(el, selectionStart, selectionEnd, isFocus = true) {
+//   let timer = setTimeout(() => {
+//       if(isFocus) {
+//           let { scrollTop } = el
+//           focus();
+//           el.scrollTop = scrollTop   // 保持聚焦后页面不滚动到底部
+//       }
+//       setSelectionRange(selectionStart, selectionEnd)   // 光标选中指定的文本
+//       clearTimeout(timer)
+//   }, 0)
+// }
+const data = [
+  `表情：&#x1F601;`,
+  `字体颜色：`,
+  '<font face="黑体">黑体字</font>',
+  '<font face="微软雅黑">微软雅黑</font>  ',
+  '<font face="STCAIYUN">华文彩云</font>',
+  '<font color=blue>蓝色</font>',
+  '<font color=#008000>绿色</font>',
+  '<font color=Red>红色</font>',
+  ' <font size=5>尺寸</font>',
+  '<table><tr><td bgcolor=DarkSeaGreen>这里的背景色是：DarkSeaGreen，此处输入任意想输入的内容</td></tr></table>',
+  '*斜体*',
+  '**粗体**',
+  '***加粗斜体***',
+  '~~删除线~~',
+  '图片：![美丽花儿](http://ww2.sinaimg.cn/large/56d258bdjw1eugeubg8ujj21kw16odn6.jpg "美丽花儿")',
+  '带大小的图片：<img decoding="async" src="https://img-blog.csdnimg.cn/7a0d33c686c34d8d8205d16fab1ba1e1.png" width="80%">',
+  '行内式超链接：欢迎来到[梵居闹市](http://blog.leanote.com/freewalk)',
+  '行内式超链接：欢迎来到[梵居闹市](http://blog.leanote.com/freewalk "梵居闹市")',
+  '自动链接：<http://example.com/>',
+  '自动链接：<address@example.com>',
+  '列表：- 无序列表项 一',
+  '列表：1. 有序列表项 一',
+  '分割线：***',
+  `
+    | 左对齐 | 右对齐 | 居中对齐 |
+    | :-----| ----: | :----: |
+    | 单元格 | 单元格 | 单元格 |
+    | 单元格 | 单元格 | 单元格 |
+  `,
+  '     代码：```javascript   (这里粘贴代码)     ```         ',
+];
   return (
     <div className="publish">
         <div className="basicInfo">
@@ -382,7 +436,7 @@ function onChange({fileList: newFileList}){
           ]}
         >
           <Upload
-               action="http://localhost:80/api/upload"
+               action="http://localhost:3008/api/upload"
                listType="picture-card"
                onChange={onChange} //0000
                fileList={fileList}
@@ -518,34 +572,47 @@ function onChange({fileList: newFileList}){
         <div className="mainContent">
 
         
-        <div className="titleMarkd">
-          <h1>编辑区&nbsp;&nbsp;(markdown语法)</h1>
-          <h1>预览区</h1>
-        </div>
-        <div className="marked">
-            {/* 编辑区 */}
-            <div 
-            className="input-region markdownStyle" 
-            contentEditable="plaintext-only"//设置div为可编辑的，且仅为纯文本
-            suppressContentEditableWarning//解决上述属性的报错问题
-            onInput={e => {//onInput为原生的js写法，就是在输入区域变化时候就触发，而onChange是输入区域变化且失去焦点时候触发
-              setContent(e.target.innerText);
-            }}
-            ref={edit}
-            onScroll={(e) => handleScroll(1, e)}
-            >
-            </div>
+          <div className="titleMarkd">
+            <h1>编辑区&nbsp;&nbsp;(markdown语法)</h1>
+            <h1>预览区</h1>
+          </div>
+          <div className="marked">
+              {/* 编辑区 */}
+              {/* <button onClick={addBlod}>加粗</button>   假设一个加粗的按钮 */}
+              <div 
+              className="input-region markdownStyle" 
+              contentEditable="plaintext-only"//设置div为可编辑的，且仅为纯文本
+              suppressContentEditableWarning//解决上述属性的报错问题
+              onInput={e => {//onInput为原生的js写法，就是在输入区域变化时候就触发，而onChange是输入区域变化且失去焦点时候触发
+                setContent(e.target.innerText);
+              }}
+              ref={edit}
+              onScroll={(e) => handleScroll(1, e)}
+              >
+              </div>
 
-            {/* 预览区 */}
-            <div
-            className="show-region markdownStyle"
-            ref={show}
-            dangerouslySetInnerHTML={{
-              __html: marked(content).replace(/<pre>/g, "<pre id='hljs'>"),
-            }}
-            >
-            </div>
+              {/* 预览区 */}
+              <div
+              className="show-region markdownStyle"
+              ref={show}
+              dangerouslySetInnerHTML={{
+                __html: marked(content).replace(/<pre>/g, "<pre id='hljs'>"),
+              }}
+              >
+              </div>
+          </div>
         </div>
+        <div className="help">
+        <List
+        header={<div>Markdown语法常用</div>}
+        bordered
+        dataSource={data}
+        renderItem={(item) => (
+          <List.Item>
+            <Typography.Text mark>[ITEM]</Typography.Text> {item}
+          </List.Item>
+        )}
+        />
         </div>
     </div>
     

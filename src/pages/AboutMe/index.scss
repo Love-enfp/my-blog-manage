@@ -214,17 +214,22 @@
             .ant-card-head-title{
                 font-weight: 700;
             }
-            .messageNew{
-                height: 165px;
-                overflow: hidden;
-            }
-            .bulletNew{
-                height: 165px;
-                overflow: hidden;
-            }
-            .commentNew{
-                height: 165px;
-                overflow: hidden;
+            // .messageNew{
+            //     // height: 165px;
+            //     // overflow: hidden;
+            // }
+            // .bulletNew{
+            //     // height: 165px;
+            //     // overflow: hidden;
+            // }
+            // .commentNew{
+            //     // height: 165px;
+            //     // overflow: hidden;
+            // }
+            .author{
+                color: red;
+                font-weight: 700;
+                font-size: 15px;
             }
         }
     }
