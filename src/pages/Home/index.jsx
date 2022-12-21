@@ -34,6 +34,7 @@ const items = [
   getItem('标签管理', '/label', <SettingOutlined />,),
   getItem('分类管理', '/sort', <SettingOutlined />,),
   getItem('弹幕管理', '/bullet', <AppstoreOutlined />),
+  getItem('日志管理', '/buildlog', <AppstoreOutlined />),
  
 
 ];

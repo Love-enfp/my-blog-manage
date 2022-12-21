@@ -14,6 +14,7 @@ import AboutMe from '../pages/AboutMe'
 import Bullet from  '../pages/Bullet'
 import AuthRoute from '../components/AuthRoute'
 import Login from '../pages/Login'
+import BuildLog from '../pages/BuildLog'
 import { Navigate } from 'react-router-dom'
 
 const routes= [
@@ -50,6 +51,10 @@ const routes= [
             {
                 path:'/bullet',
                 element:<Bullet/>
+            },
+            {
+                path:'/buildlog',
+                element:<BuildLog/>
             },
             {
                 path:'/',

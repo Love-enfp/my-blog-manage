@@ -32,6 +32,11 @@ const base={
     updatebullet:'/api/updatebullet',
     deletebullet:'/api/deletebullet',
 
+    buildlog:'/api/buildlog',
+    submitbuildlog:'/api/submitbuildlog',
+    updatebuildlog:'/api/updatebuildlog',
+    deletebuildlog:'/api/deletebuildlog',
+
     comments:'/api/comments',
     submitComment:'/api/submitComment',
     deletecomment:'/api/deletecomment',
@@ -237,8 +242,39 @@ const api={
         method:'post',
         url:base.baseUrl+base.upload,
         data:params//post请求传参，用data参数接受，若想通过res.body接受，一定要是data参数
-    })
-    }
+       })
+    },
+     // 获得建站日志
+     getBuildLog(){
+        return axios({
+            method:'get',
+            url:base.baseUrl+base.buildlog
+        })
+    },
+    //发表建站日志
+    submitBulidLog(params){
+        return axios({
+            method:'post',
+            url:base.baseUrl+base.submitbuildlog,
+            data:params
+        })
+    },
+    // 修改建站日志
+    updateBulidLog(params){
+        return axios({
+            method:'post',
+            url:base.baseUrl+base.updatebuildlog,
+            data:params
+        })
+    },
+    // 删除建站日志
+    deleteBulidLog(params){
+        return axios({
+            method:'post',
+            url:base.baseUrl+base.deletebuildlog,
+            data:params
+        })
+    },
 
 }
 

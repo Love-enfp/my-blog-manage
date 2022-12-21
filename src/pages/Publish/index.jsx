@@ -436,6 +436,7 @@ const data = [
           ]}
         >
           <Upload
+              //  action="http://1.117.109.184:3008/api/upload"
                action="http://localhost:3008/api/upload"
                listType="picture-card"
                onChange={onChange} //0000

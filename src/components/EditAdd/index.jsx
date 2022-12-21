@@ -38,9 +38,18 @@ export default function EditAdd(props) {
           'id':len+1,
           'create_date': value['create_date'].format('YYYY-MM-DD HH:mm:ss'),
         }
-        // 发起请求
-        api.submitBulletScreen(params).then(res=>{
-        })
+        if(props.buildlogtag==true)
+        {
+            // 发起请求
+            api.submitBulidLog(params).then(res=>{
+            })
+        }
+        else{
+            // 发起请求
+            api.submitBulletScreen(params).then(res=>{
+            })
+        }
+        
         message.success('添加成功')
         // 回传标志
         props.isReOpen(false)
@@ -59,11 +68,20 @@ export default function EditAdd(props) {
         ...value,
         'create_date': value['create_date'].format('YYYY-MM-DD HH:mm:ss'),
       }
-      // console.log(111);
-      // 发起请求
-      api.updateBullet(params).then(res=>{
-        console.log(res.data);
-      })
+      if(props.buildlogtag==true)
+        {
+            // 发起请求
+            api.updateBulidLog(params).then(res=>{
+            })
+        }
+     
+      else{
+            // 发起请求
+            api.updateBullet(params).then(res=>{
+              console.log(res.data);
+            })
+      }
+      
       message.success('编辑成功')
       window.location.reload() // 强制页面刷新
       // 回传标志
