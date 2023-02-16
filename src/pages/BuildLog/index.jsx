@@ -12,9 +12,11 @@ export default function BuildLog() {
   const dispatch=useDispatch()
 
   const [buildlogs,setbuildlogs]=useState([])
+  // 是否打开弹框（编辑和新增用的同一个）
   const [isModalOpen, setIsModalOpen] = useState(false);
   // false默认代表是增加，true代表是编辑
   const [editoradd,setEditoradd]=useState(false)
+  // 存储要编辑的信息
   const [updateData,setUpdateData]=useState()
   // 编辑建站日志
   function updateBullet(rowData){
@@ -29,6 +31,7 @@ export default function BuildLog() {
     setIsModalOpen(true)
     setEditoradd(false)
   }
+  // 编辑组件执行完了，告诉父组件可以关闭弹框了
   function isReOpen(flag){
     if(flag==false)
     setIsModalOpen(false)
@@ -101,7 +104,6 @@ export default function BuildLog() {
     //   dispatch(initBullet(result))
     })
   },[refresh])
-
 
   return (
     <div className='buildlogPage'>

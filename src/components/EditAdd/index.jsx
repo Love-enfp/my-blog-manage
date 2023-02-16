@@ -7,9 +7,7 @@ export default function EditAdd(props) {
   const form=useRef()
   let len=props.n
   // 存储对话框显示的标志
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);  
   useEffect(()=>{
     setIsModalOpen(props.isModalOpen)
     // 如果点击是编辑，就回显数据
@@ -56,7 +54,7 @@ export default function EditAdd(props) {
         // 关闭弹框
         setIsModalOpen(false)
         
-        window.location.reload() // 强制页面刷新
+        // window.location.reload() // 强制页面刷新
         // message.success('发布弹幕成功')
         // console.log(22);
     }
@@ -83,7 +81,7 @@ export default function EditAdd(props) {
       }
       
       message.success('编辑成功')
-      window.location.reload() // 强制页面刷新
+      // window.location.reload() // 强制页面刷新
       // 回传标志
       props.isReOpen(false)
       // 关闭弹框
@@ -129,8 +127,6 @@ export default function EditAdd(props) {
             autoComplete="off"
             ref={form}
           >
-
-
        
             <Form.Item
               label="id"

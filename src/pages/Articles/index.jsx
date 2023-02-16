@@ -21,8 +21,6 @@ const Articles = () => {
         /* 拿到一个对象，直接对其中的属性修改，然后返回整个对象就行！ */
         item.create_date=dateFormatter(item.create_date,'yyyy-mm-dd HH:mm:ss')
         item.update_date=dateFormatter(item.update_date,'yyyy-mm-dd HH:mm:ss')
-        item.a='1'
-
           // 查找每个文章对应的分类---------------------------------------------
           let sortData= sorts.filter((i)=>i.blog_id===item.id)
           console.log(sortData);
@@ -30,8 +28,6 @@ const Articles = () => {
           if(sortData[0])//加个判断，不然会报错
           item.sort=sortData[0].name
           item.sort_id=sortData[0].id
-
-          
           // 查找每个标签对应的分类---------------------------------------------
           let labelData= labels.filter((j)=>j.blog_id===item.id)
           item.label=labelData
@@ -42,7 +38,6 @@ const Articles = () => {
           }
         return item
       })
-      console.log(result);
       setArticles(result)
     })
   },[])
@@ -266,12 +261,9 @@ const Articles = () => {
       key:'handle',
       render: (rowData) => (
         <Space size="middle" key={rowData.id}>
-
           {/* <NavLink   to={`http://1.117.109.184/article/${rowData.id}`} >查看详情</NavLink> */}
           <a href={`http://1.117.109.184/article/${rowData.id}`} className="detail">详情</a>
-
           <NavLink  className={localStorage.getItem('visitor-token')?"disabled":''}      to="/publish" state={{currentArticle:rowData,currentLabels:labels,flag:true}}>编辑</NavLink>
-
           <Popconfirm
           title="你确定要删除吗"
           onConfirm={()=>deleteArticles(rowData)}

@@ -1,36 +1,27 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
-import { Button, Input, Space, Table,Tag ,Popconfirm,message} from 'antd';
+import { Button, Input, Space, Table, Tag, Popconfirm, message } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import { dateFormatter } from '../../utils/dateFormat';
-import {EyeOutlined,EyeInvisibleOutlined,PushpinOutlined} from '@ant-design/icons';
+import { EyeOutlined, EyeInvisibleOutlined, PushpinOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { initMessage } from '../../redux/actions/message';
 import { deleteMessage } from '../../redux/actions/message';
 import './index.scss'
 import api from '../../api';
-
 export default function LeaveWords() {
-
-  const dispatch=useDispatch()
-
-  const [messages,setMessages]=useState([])
-
-  // const result=useSelector(state=>state.messages)
-
-  useEffect(()=>{
-    api.geMessage().then(res=>{
-      const result= res.data.allMessage.map((item)=>{
-        item.create_time=dateFormatter(item.create_time,'yyyy-mm-dd HH:mm:ss')
+  const dispatch = useDispatch()
+  const [messages, setMessages] = useState([])
+  useEffect(() => {
+    api.geMessage().then(res => {
+      const result = res.data.allMessage.map((item) => {
+        item.create_time = dateFormatter(item.create_time, 'yyyy-mm-dd HH:mm:ss')
         return item
       })
       setMessages(result)
     })
 
-    
-  },[])
+  }, [])
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
@@ -151,9 +142,9 @@ export default function LeaveWords() {
       width: '20%',
       ...getColumnSearchProps('nick'),
       render: (rowData) => (
-          rowData==='钟爱enfp女孩' ?
+        rowData === '钟爱enfp女孩' ?
           <span className='author'><PushpinOutlined className='authorIcon' />&nbsp;{rowData}</span>
-          :rowData
+          : rowData
       ),
     },
     {
@@ -163,7 +154,7 @@ export default function LeaveWords() {
       width: '25%',
       ...getColumnSearchProps('content'),
       ellipsis: true//内容溢出。。。
-          
+
     },
     {
       title: '邮箱',
@@ -180,7 +171,7 @@ export default function LeaveWords() {
       key: 'avatar',
       width: '15%',
       render: (rowData) => (
-            <img src={rowData} width="100" height="100" alt=""  key={rowData}/>
+        <img src={rowData} width="100" height="100" alt="" key={rowData} />
       ),
     },
     {
@@ -196,30 +187,30 @@ export default function LeaveWords() {
       width: '10%',
       render: (rowData) => (
         <>
-        {
-          rowData===0?
-          <Tag color='red' key={rowData}>评论</Tag>
-          :
-          <Tag color='orange' key={rowData}>回复id:{rowData}</Tag>
-        }
+          {
+            rowData === 0 ?
+              <Tag color='red' key={rowData}>评论</Tag>
+              :
+              <Tag color='orange' key={rowData}>回复id:{rowData}</Tag>
+          }
         </>
       ),
     },
 
     {
       title: '操作',
-      key:'handle',
+      key: 'handle',
       render: (rowData) => (
         <Space size="middle" key={rowData.id}>
           <a href={`http://1.117.109.184/leavewords`} className="detail">详情</a>
 
           <Popconfirm
-          title="你确定要删除吗"
-          onConfirm={()=>deletemessages(rowData)}
-          okText="删除"
-          cancelText="取消"
+            title="你确定要删除吗"
+            onConfirm={() => deletemessages(rowData)}
+            okText="删除"
+            cancelText="取消"
           >
-            <a className={localStorage.getItem('visitor-token')?"disabled":''} >删除</a>
+            <a className={localStorage.getItem('visitor-token') ? "disabled" : ''} >删除</a>
           </Popconfirm>
 
         </Space>
@@ -227,25 +218,25 @@ export default function LeaveWords() {
       width: '10%',
     },
   ];
-  function deletemessages(rowData){
+  function deletemessages(rowData) {
     console.log(rowData.id);
-    api.deleteMessage({id:rowData.id}).then(res=>{
+    api.deleteMessage({ id: rowData.id }).then(res => {
       console.log(res.data);
       // 更新redux中的值
       dispatch(deleteMessage(rowData.id))
       // dispatch(initMessage(result))
     })
     message.success('删除成功')
-    
+
     setTimeout(() => {
       window.location.reload() // 强制页面刷新
     }, 1000);
-  
-    
+
+
   }
   return (
     <div className="messages">
-      <Table columns={columns} dataSource={messages}  bordered rowKey={record => record.id}/>
+      <Table columns={columns} dataSource={messages} bordered rowKey={record => record.id} />
 
     </div>
   )
